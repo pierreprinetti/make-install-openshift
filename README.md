@@ -15,7 +15,7 @@ make install
 
 Optionals:
 ```shell
-export CLUSTER_NAME=$artitrary_name
+export CLUSTER_NAME=$arbitrary_name
 export OPENSHIFT_INSTALLER=$path_of_your_openshift_installer
 ```
 
