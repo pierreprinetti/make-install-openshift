@@ -22,4 +22,5 @@ export OPENSHIFT_INSTALLER=$path_of_your_openshift_installer
 Then:
 ```shell
 make destroy
+make clean # to remove logs and temporary files
 ```
