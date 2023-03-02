@@ -29,7 +29,7 @@ controlPlane:
           fixedIP:
             subnet:
               id: ef1824a8-f9ba-4b52-b254-b61cbe273331
-              ip_address: 10.0.3.12
+            ipAddress: 10.0.3.12
   replicas: 3
 metadata:
   name: ${CLUSTER_NAME}
