@@ -6,13 +6,20 @@
 1. Runs the installer
 
 Usage:
-
 ```shell
-export OS_CLOUD=<a clouds.yaml entry>
-export AWS_ZONE_ID=<your AWS zone ID>
+export OS_CLOUD=$your_favourite_clouds-yaml_entry
+export AWS_ZONE_ID=$_your_AWS_zone_ID
+export BASE_DOMAIN=$domain_of_your_AWS_zone
 make install
 ```
 
+Optionals:
+```shell
+export CLUSTER_NAME=$artitrary_name
+export OPENSHIFT_INSTALLER=$path_of_your_openshift_installer
+```
+
+Then:
 ```shell
 make destroy
 ```
