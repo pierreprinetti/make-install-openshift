@@ -1,0 +1,3 @@
+controlplane_flavor=m1.xlarge
+compute_flavor=m1.large
+external_network=provider_net_shared_3

@@ -1,0 +1,1 @@
+./resources_osp1.sh

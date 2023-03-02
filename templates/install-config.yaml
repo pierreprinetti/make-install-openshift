@@ -1,0 +1,63 @@
+apiVersion: v1
+baseDomain: ${BASE_DOMAIN}
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform:
+    openstack:
+      type: ${COMPUTE_FLAVOR}
+  replicas: 3
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    openstack:
+      type: ${CONTROL_PLANE_FLAVOR}
+      failureDomains:
+      - portTargets:
+        - id: storage
+          network:
+            id: 8db6a48e-375b-4caa-b20b-5b9a7218bfe6
+      - portTargets:
+        - id: storage
+          network:
+            name: pprinett-fd-2
+      - portTargets:
+        - id: storage
+          fixedIP:
+            subnet:
+              id: ef1824a8-f9ba-4b52-b254-b61cbe273331
+              ip_address: 10.0.3.12
+  replicas: 3
+metadata:
+  name: ${CLUSTER_NAME}
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.128.0/17
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+# proxy:
+#   httpsProxy: http://192.168.3.208:3128
+#   httpProxy: http://192.168.3.208:3128
+platform:
+  openstack:
+    apiFloatingIP: ${API_IP}
+    ingressFloatingIP: ${INGRESS_IP}
+    apiVIP: 10.0.128.5
+    cloud: ${OS_CLOUD}
+    # externalDNS:
+    # - 1.1.1.1
+    # - 1.0.0.1
+    externalNetwork: ${EXTERNAL_NETWORK}
+    ingressVIP: 10.0.128.7
+publish: External
+pullSecret: |
+  ${PULL_SECRET}
+sshKey: |
+  ${SSH_PUB_KEY}

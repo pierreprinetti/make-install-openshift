@@ -1,0 +1,3 @@
+controlplane_flavor=ocp.master
+compute_flavor=ocp.worker
+external_network=external
